@@ -1,0 +1,26 @@
+version: "3"
+services:
+  postgres_a:
+    image: "postgres:11"
+    container_name: "postgres_a"
+    ports:
+      - "54320:5432"
+    volumes:
+      - dbdata_a:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+  postgres_b:
+    image: "postgres:11"
+    container_name: "postgres_b"
+    ports:
+      - "54321:5432"
+    volumes:
+      - dbdata_b:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+volumes:
+    dbdata_a:
+    dbdata_b:
+
