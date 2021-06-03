@@ -8,4 +8,3 @@ pip install psycopg2-binary pandas apache-airflow great_expectations sqlalchemy
 
 
 sudo docker-compose up -d
-sudo docker exec airflow airflow scheduler
