@@ -87,3 +87,6 @@ create table log (
 cd ..
 cd ..
 
+
+sudo docker exec airflow airflow scheduler
+
