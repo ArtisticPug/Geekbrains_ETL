@@ -1,0 +1,220 @@
+groups:
+  hubs:
+    part:
+      dtype: {}
+    customer:
+      dtype: {}
+    nation:
+      dtype: {}
+    region:
+      dtype: {}
+    orders:
+      dtype: {}
+    supplier:
+      dtype: {}
+  links:
+    customer_nation:
+      dtype: {}
+    customer_order:
+      dtype: {}
+    order_part_supplier:
+      dtype: {}
+    nation_region:
+      dtype: {}
+    nation_supplier:
+      dtype: {}
+    part_supplier:
+      dtype: {}
+  sattelites:
+    part:
+      dtype: {}
+    customer:
+      dtype: {}
+    nation:
+      dtype: {}
+    region:
+      dtype: {}
+    orders:
+      dtype: {}
+    supplier:
+      dtype: {}
+    order_part_supplier:
+      dtype: {}
+    part_supplier:
+      dtype: {}
+
+sources:
+  tables:
+    part:
+      columns:
+        partkey:
+          bk_for: part
+          dtype: int
+        name:
+          dtype: {}
+        mfgr:
+          dtype: {}
+        brand:
+          dtype: {}
+        type:
+          dtype: {}
+        size:
+          dtype: {}
+        container:
+          dtype: {}
+        retailprice:
+          dtype: {}
+        comment:
+          dtype: {}
+        launch_id:
+          dtype: int
+        
+    customer:
+      columns:
+        custkey:
+          bk_for: customer
+          dtype: int
+        name:
+          dtype: {}
+        address:
+          dtype: {}
+        nationkey:
+          dtype: int
+        phone:
+          dtype: {}
+        acctball:
+          dtype: {}
+        mktsegment:
+          dtype: {}
+        comment:
+          dtype: {}
+        launch_id:
+          dtype: int
+          
+    nation:
+      columns:
+        nationkey:
+          bk_for: nation
+          dtype: int
+        name:
+          dtype: {}
+        regionkey:
+          region_bk: {}
+          dtype: int
+        comment:
+          dtype: {}
+        launch_id:
+          dtype: int
+
+    region:
+      columns:
+        regionkey:
+          bk_for: region
+          dtype: int
+        name:
+          dtype: {}
+        comment:
+          dtype: {}
+        launch_id:
+          dtype: int
+
+    orders:
+      columns:
+        orderkey:
+          bk_for: order
+          dtype: int
+        custkey:
+          bk_for: customer
+          dtype: int
+        orderstatus:
+          dtype: {}
+        totalprice:
+          dtype: {}
+        orderdate:
+          dtype: {}
+        orderpriority:
+          dtype: {}
+        clerk:
+          dtype: {}
+        shippriority:
+          dtype: {}
+        comment:
+          dtype: {}
+        launch_id:
+          dtype: int
+
+    supplier:
+      columns:
+        suppkey:
+          bk_for: supplier
+          dtype: int
+        name:
+          dtype: {}
+        address:
+          dtype: {}
+        nationkey:
+          nation_bk: int
+          dtype: int
+        phone:
+          dtype: {}
+        acctball:
+          dtype: {}
+        comment:
+          dtype: {}
+        launch_id:
+          dtype: int
+    
+    lineitem:
+      columns:
+        orderkey:
+          bk_for: order
+          dtype: int
+        partkey:
+          bk_for: part
+          dtype: int
+        suppkey:
+          bk_for: supplier
+          dtype: int
+        linenumber:
+          dtype: int
+        quantity:
+          dtype: {}
+        extendedprice:
+          dtype: {}
+        discount:
+          dtype: {}
+        tax:
+          dtype: {}
+        returnflag:
+          dtype: {}
+        linestatus:
+          dtype: {}
+        shipdate:
+          dtype: {}
+        shipinstruct:
+          dtype: {}
+        shipmode:
+          dtype: {}
+        comment:
+          dtype: {}
+        launch_id:
+          dtype: int
+    
+    partsupp:
+      columns:
+        partkey:
+          bk_for: part
+          dtype: int
+        suppkey:
+          bk_for: supplier
+          dtype: int
+        availqty:
+          dtype: {}
+        supplycost:
+          dtype: {}
+        comment:
+          dtype: {}
+        launch_id:
+          dtype: int
+
+

@@ -1,0 +1,180 @@
+groups:
+  hubs:
+    part:
+    supplier:
+    orders:
+    customer:
+    nation:
+    region:
+
+  links:
+    customer_nation:
+        customer: ['customer', 'nation']
+    customer_orders:
+        orders: ['customer', 'orders']
+    orders_part_supplier:
+        lineitem: ['orders', 'part', 'supplier']
+    nation_region:
+        nation: ['nation', 'region']
+    nation_supplier:
+        supplier: ['nation', 'supplier']
+    part_supplier:
+        partsupp: ['part', 'supplier']
+            
+  satellites:
+    part: part
+    supplier: supplier
+    orders: orders
+    customer: customer
+    nation: nation
+    region: region
+    orders_part_supplier: lineitem
+    part_supplier: partsupp
+
+sources:
+  tables:
+    part:
+      columns:
+      - part_bk:
+          bk_for: part
+      - name:
+          source_for: part
+      - mfgr:
+          source_for: part
+      - brand:
+          source_for: part
+      - type:
+          source_for: part
+      - size:
+          source_for: part
+      - container:
+          source_for: part
+      - retailprice:
+          source_for: part
+      - comment:
+          source_for: part
+
+    supplier:  
+      columns:
+      - supplier_bk:
+          bk_for: supplier
+      - name:
+          source_for: supplier
+      - address:
+          source_for: supplier
+      - nation_bk:
+          bk_for: nation
+      - phone:
+          source_for: supplier
+      - acctbal:
+          source_for: supplier
+      - comment:
+          source_for: supplier
+
+    partsupp:  
+      columns:
+      - part_bk:
+          bk_for: part
+      - supplier_bk:
+          bk_for: supplier
+      - availqty:
+          source_for: part_supplier
+      - supplycost:
+          source_for: part_supplier
+      - comment:
+          source_for: part_supplier
+
+    lineitem:  
+      columns:
+      - orders_bk:
+          bk_for: orders
+      - part_bk:
+          bk_for: part
+      - supplier_bk:
+          bk_for: supplier
+      - linenumber:
+          source_for: orders_part_supplier
+      - quantity:
+          source_for: orders_part_supplier
+      - extendedprice:
+          source_for: orders_part_supplier
+      - discount:
+          source_for: orders_part_supplier
+      - tax:
+          source_for: orders_part_supplier
+      - returnflag:
+          source_for: orders_part_supplier
+      - linestatus:
+          source_for: orders_part_supplier
+      - shipdate:
+          source_for: orders_part_supplier
+      - commitdate:
+          source_for: orders_part_supplier
+      - receiptdate:
+          source_for: orders_part_supplier
+      - shipinstruct:
+          source_for: orders_part_supplier
+      - shipmode:
+          source_for: orders_part_supplier
+      - comment:
+          source_for: orders_part_supplier
+
+    orders:
+      columns:
+      - orders_bk:
+          bk_for: orders
+      - customer_bk:
+          bk_for: customer
+      - orderstatus:
+          source_for: orders
+      - totalprice:
+          source_for: orders
+      - orderdate:
+          source_for: orders
+      - orderpriority:
+          source_for: orders
+      - shippriority:
+          source_for: orders
+      - clerk:
+          source_for: orders
+      - comment:
+          source_for: orders
+
+    customer:
+      columns:
+      - customer_bk:
+          bk_for: customer
+      - name:
+          source_for: customer
+      - address:
+          source_for: customer
+      - nation_bk:
+          bk_for: nation
+      - phone:
+          source_for: customer
+      - acctbal:
+          source_for: customer
+      - mktsegment:
+          source_for: customer
+      - comment:
+          source_for: customer
+
+    nation:  
+      columns:
+      - nation_bk:
+          bk_for: nation
+      - name:
+          source_for: nation
+      - region_bk:
+          bk_for: region
+      - comment:
+          source_for: nation
+          
+    region:
+      columns:
+      - region_bk:
+          bk_for: region
+      - name:
+          source_for: region
+      - comment:
+          source_for: region
